@@ -13,8 +13,8 @@ for i in range(cantidad):
     if precio < 0:
         print("Precio no valido, tien que ser mayor a 0")
         continue
-    cantidad = int(input("Ingrese la cantidad del producto en stock: "))
-    if cantidad < 0:
+    stock = int(input("Ingrese la cantidad del producto en stock: "))
+    if stock < 0:
         print("No puede ingresar una cantidad menor a 0.")
     inventario[codigo] = {
         "nombre": nombre,
@@ -22,3 +22,18 @@ for i in range(cantidad):
         "precio": precio,
         "talla": talla,
     }
+
+print("Productos registrados:")
+for codigo, producto in inventario.items():
+    print(f"\nCódigo del producto: {codigo}")
+    print(f"Nombre del producto: {producto['nombre']}\tCategoria: {producto['categoria']}\tTalla: {producto['talla']}")
+    print(f"Precio del producto: {producto['precio']}\tCantidad en stock: {producto['stock']}")
+
+buscar = input("Ingrese el códgio del producto que desea buscar: ")
+if buscar in inventario:
+    print(f"Nombre del producto: {inventario[buscar]['nombre']}\tCategoria: {inventario[buscar]['categoria']}")
+    print(f"Talla: {inventario[buscar]['talla']}\tPrecio del producto: {producto['precio']}")
+    print(f"Cantidad en stock: {producto['stock']}")
+
+    valor_total = producto["precio"] * producto["stock"]
+    print(f"Valor total del producto en inventario: {valor_total}")
