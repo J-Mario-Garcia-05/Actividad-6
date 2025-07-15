@@ -1,20 +1,21 @@
 inventario = {}
+i = 1
 cantidad = int(input("Ingrese la cantidad de productos que va a registrar: "))
-for i in range(cantidad):
-    print(f"Productio: {i + 1}")
+while i <= cantidad:
+    print(f"\nProducto {i}:")
     codigo = input("Código del producto: ")
     if codigo in inventario:
-        print("El codigo que ingreso ya se encuentra registrado en otro producto.")
+        print("El codigo que ingreso ya se encuentra registrado en otro producto, repita nuevamente el registro.")
         continue
     nombre = input("Nombre del producto: ")
     categoria = input("Categoría del producto (hombre/mujer/niño): ")
     if categoria != "hombre" and categoria != "mujer" and categoria != "niño":
-        print("Categoría no válida")
+        print("Categoría no válida, repita nuevamente el registro.")
         continue
     talla = input("Talla del producto: ")
     precio = int(input("Precio del producto: Q."))
     if precio < 0:
-        print("Precio no valido, tien que ser mayor a 0")
+        print("Precio no valido, tien que ser mayor a 0, repita nuevamente el registro.")
         continue
     stock = int(input("Ingrese la cantidad del producto en stock: "))
     if stock < 0:
@@ -24,7 +25,9 @@ for i in range(cantidad):
         "categoria": categoria,
         "precio": precio,
         "talla": talla,
+        "stock": stock
     }
+    i += 1
 
 print("Productos registrados:")
 for codigo, producto in inventario.items():
