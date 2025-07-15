@@ -7,7 +7,10 @@ for i in range(cantidad):
         print("El codigo que ingreso ya se encuentra registrado en otro producto.")
         continue
     nombre = input("Nombre del producto: ")
-    categoria = input("Categoría del producto (hombre/mujer): ")
+    categoria = input("Categoría del producto (hombre/mujer/niño): ")
+    if categoria != "hombre" and categoria != "mujer" and categoria != "niño":
+        print("Categoría no válida")
+        continue
     talla = input("Talla del producto: ")
     precio = int(input("Precio del producto: Q."))
     if precio < 0:
@@ -37,3 +40,18 @@ if buscar in inventario:
 
     valor_total = producto["precio"] * producto["stock"]
     print(f"Valor total del producto en inventario: {valor_total}")
+
+print("Cantidad por categoría:")
+cantidad_producto = 0
+producto_mujer = 0
+producto_hombre = 0
+for codigo, producto in inventario.items():
+    if producto['categoria'] == "mujer":
+        producto_mujer += 1
+    elif producto['categoria'] == "hombre":
+        producto_hombre += 1
+    else:
+        cantidad_producto += 1
+print(f"Productos de niño: {cantidad_producto}")
+print(f"Productos de mujer: {producto_mujer}")
+print(f"Productos de hombre: {producto_hombre}")
